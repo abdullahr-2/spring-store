@@ -13,6 +13,9 @@ public class UserService {
     }
 
     public void registerUser(User user) {
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new IllegalArgumentException("User with email " + user.getEmail() + " is already registered");
+        }
         userRepository.save(user);
         notificationService.send("Successfully registered user", "remail@gmail.com");
     }
