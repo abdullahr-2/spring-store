@@ -1,5 +1,8 @@
 package ca.abdullahr2.springstore;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserService {
     UserRepository userRepository;
     NotificationService notificationService;

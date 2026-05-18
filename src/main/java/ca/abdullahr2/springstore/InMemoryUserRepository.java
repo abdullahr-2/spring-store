@@ -1,7 +1,10 @@
 package ca.abdullahr2.springstore;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 
+@Repository
 public class InMemoryUserRepository implements UserRepository{
     /**
      * Hashmap to store users
