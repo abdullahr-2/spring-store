@@ -13,6 +13,7 @@ public class UserService {
     }
 
     public void registerUser(User user) {
-
+        userRepository.save(user);
+        notificationService.send("Successfully registered user", "remail@gmail.com");
     }
 }
