@@ -64,6 +64,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>12.6.0</version>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/ab_sql?createDatabaseIfNotExist=true</url>
+                    <user>root</user>
+                    <password>MySQL4908diesel</password>
+                    <cleanDisabled>false</cleanDisabled>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
