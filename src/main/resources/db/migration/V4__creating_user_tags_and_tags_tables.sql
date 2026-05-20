@@ -10,12 +10,13 @@ create table tags
 create table user_tags
 (
     user_id BIGINT not null,
-    tag_id  INT    not null,
+    tag_id  BIGINT    not null,
     constraint user_tags_pk
-        primary key (user_id, tag_id),
+        primary key (tag_id, user_id),
     constraint user_tags_tags_id_fk
-        foreign key (tag_id) references tags (id) on delete cascade,
+        foreign key (tag_id) references tags (id)
+            on delete cascade,
     constraint user_tags_users_id_fk
-        foreign key (user_id) references users (id) on delete cascade
+        foreign key (user_id) references users (id)
+            on delete cascade
 );
-
