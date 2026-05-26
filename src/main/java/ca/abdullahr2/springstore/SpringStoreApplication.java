@@ -1,6 +1,7 @@
 package ca.abdullahr2.springstore;
 
 import ca.abdullahr2.springstore.entities.Address;
+import ca.abdullahr2.springstore.entities.Tag;
 import ca.abdullahr2.springstore.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +23,7 @@ public class SpringStoreApplication {
                 .zip("zip")
                 .build();
 
-        user.addAddress(address);
+        user.addTag(new Tag("tag1"));
         System.out.println(user);
     }
 
