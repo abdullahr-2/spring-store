@@ -3,6 +3,8 @@ package ca.abdullahr2.springstore.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,11 +16,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "price")
-    private float price;
+    private BigDecimal price;
 }
