@@ -1,12 +1,11 @@
 package ca.abdullahr2.springstore;
 
-import ca.abdullahr2.springstore.entities.Address;
-import ca.abdullahr2.springstore.entities.Profile;
-import ca.abdullahr2.springstore.entities.Tag;
-import ca.abdullahr2.springstore.entities.User;
+import ca.abdullahr2.springstore.entities.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import java.math.BigDecimal;
 
 @SpringBootApplication
 public class SpringStoreApplication {
@@ -17,19 +16,17 @@ public class SpringStoreApplication {
                 .email("abrlacc4578@gmail.com")
                 .password("pass")
                 .build();
-        Address address = Address.builder()
-                .street("street")
-                .city("city")
-                .state("state")
-                .zip("zip")
+
+        Category category = Category.builder()
+                .name("category1")
                 .build();
-        Profile profile  = Profile.builder()
-                .bio("bio")
+        Product product = Product.builder()
+                .name("product1")
+                .price(BigDecimal.valueOf(12.11))
                 .build();
 
-        user.setProfile(profile);
+        category.addProduct(product);
 
-        System.out.println(user);
+        System.out.println(category);
     }
-
 }
