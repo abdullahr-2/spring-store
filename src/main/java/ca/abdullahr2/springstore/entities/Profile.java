@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Builder
 @Table(name = "profiles")
@@ -26,4 +27,10 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private String loyaltyPoints;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId
+    @ToString.Exclude
+    private User user;
 }

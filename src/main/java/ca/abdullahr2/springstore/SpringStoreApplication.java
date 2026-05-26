@@ -1,6 +1,7 @@
 package ca.abdullahr2.springstore;
 
 import ca.abdullahr2.springstore.entities.Address;
+import ca.abdullahr2.springstore.entities.Profile;
 import ca.abdullahr2.springstore.entities.Tag;
 import ca.abdullahr2.springstore.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -22,8 +23,12 @@ public class SpringStoreApplication {
                 .state("state")
                 .zip("zip")
                 .build();
+        Profile profile  = Profile.builder()
+                .bio("bio")
+                .build();
 
-        user.addTag(new Tag("tag1"));
+        user.setProfile(profile);
+
         System.out.println(user);
     }
 
