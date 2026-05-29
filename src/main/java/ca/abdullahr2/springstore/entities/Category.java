@@ -1,22 +1,19 @@
 package ca.abdullahr2.springstore.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Builder
 @Entity
-@Table(name = "categories")
+@Table(name = "categories", schema = "ab_sql")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Byte id;
 
@@ -24,11 +21,5 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    @Builder.Default
-    public Set<Product> products = new HashSet<>();
-
-    public void addProduct(Product product) {
-        products.add(product);
-        product.setCategory(this);
-    }
+    private Set<Product> products = new HashSet<>();
 }

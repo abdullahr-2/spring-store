@@ -17,16 +17,5 @@ public class SpringStoreApplication {
                 .password("pass")
                 .build();
 
-        Category category = Category.builder()
-                .name("category1")
-                .build();
-        Product product = Product.builder()
-                .name("product1")
-                .price(BigDecimal.valueOf(12.11))
-                .build();
-
-        category.addProduct(product);
-
-        System.out.println(category);
     }
 }
