@@ -14,10 +14,10 @@ import java.util.Set;
 @Table(name = "categories", schema = "ab_sql")
 public class Category {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Byte id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "category")
