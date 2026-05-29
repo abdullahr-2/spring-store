@@ -1,16 +1,11 @@
 spring:
   application:
     name: spring-store
+  flyway:
+    locations: classpath:src/main/resources/db/migration
   datasource:
     url: jdbc:mysql://localhost:3306/ab_sql?createDatabaseIfNotExist=true
     username: root
     password: MySQL4908diesel
-stripe:
-  apiUrl: https://api.stripe.com
-  timeout: 1000
-  enabled: true
-  supported-currencies: USD,EUR,GBP
-payment-gateway: stripe
-mail:
-  host: https://smtp.gmail.com
-  port: 5761
+
+kind: Application
