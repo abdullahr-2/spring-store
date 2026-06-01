@@ -12,9 +12,7 @@ import java.math.BigDecimal;
 public class SpringStoreApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(SpringStoreApplication.class);
-        var repository = context.getBean(UserRepository.class);
-
-        repository.deleteById(1L);
-
+        var service = context.getBean(UserService.class);
+        service.fetchAddress();
     }
 }
