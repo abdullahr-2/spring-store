@@ -1,15 +1,13 @@
 package ca.abdullahr2.springstore.services;
 
-import ca.abdullahr2.springstore.entities.Address;
-import ca.abdullahr2.springstore.entities.Profile;
-import ca.abdullahr2.springstore.entities.User;
-import ca.abdullahr2.springstore.repositories.AddressRepository;
-import ca.abdullahr2.springstore.repositories.ProfileRepository;
-import ca.abdullahr2.springstore.repositories.UserRepository;
+import ca.abdullahr2.springstore.entities.*;
+import ca.abdullahr2.springstore.repositories.*;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Service
@@ -18,6 +16,23 @@ public class UserService {
     private final EntityManager entityManager;
     private final ProfileRepository profileRepository;
     private final AddressRepository addressRepository;
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+
+    public void manageProducts() {
+        Category category = Category.builder()
+                .name("Category 1")
+                .build();
+
+        Product product = Product.builder()
+                .name("Product 1")
+                .price(BigDecimal.valueOf(11.99))
+                .description("Description 1")
+                .category(category)
+                .build();
+
+        productRepository.save(product);
+    }
 
     @Transactional
     public void showEntityStates() {
