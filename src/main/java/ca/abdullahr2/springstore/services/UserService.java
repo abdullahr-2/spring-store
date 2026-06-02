@@ -25,6 +25,11 @@ public class UserService {
     }
 
     @Transactional
+    public void updateProductPrices() {
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(10.99), (byte) 2);
+    }
+
+    @Transactional
     public void showEntityStates() {
         User user = User.builder()
                 .name("ar")
