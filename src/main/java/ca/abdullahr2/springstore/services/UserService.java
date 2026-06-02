@@ -21,15 +21,10 @@ public class UserService {
 
     @Transactional
     public void manageProducts() {
-        Category category = categoryRepository.findById((byte) 1).orElseThrow();
-        Product product = Product.builder()
-                .name("Product 2")
-                .description("Description 2")
-                .price(BigDecimal.valueOf(12.99))
-                .category(category)
-                .build();
-
-        productRepository.save(product);
+        User user = userRepository.findById(1L).orElseThrow();
+        var products = productRepository.findAll();
+        products.forEach(user::addToWishlist);
+        userRepository.save(user);
     }
 
     @Transactional
