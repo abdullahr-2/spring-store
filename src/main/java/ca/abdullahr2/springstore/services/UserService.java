@@ -19,15 +19,13 @@ public class UserService {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
+    @Transactional
     public void manageProducts() {
-        Category category = Category.builder()
-                .name("Category 1")
-                .build();
-
+        Category category = categoryRepository.findById((byte) 1).orElseThrow();
         Product product = Product.builder()
-                .name("Product 1")
-                .price(BigDecimal.valueOf(11.99))
-                .description("Description 1")
+                .name("Product 2")
+                .description("Description 2")
+                .price(BigDecimal.valueOf(12.99))
                 .category(category)
                 .build();
 
