@@ -21,10 +21,7 @@ public class UserService {
 
     @Transactional
     public void manageProducts() {
-        User user = userRepository.findById(1L).orElseThrow();
-        var products = productRepository.findAll();
-        products.forEach(user::addToWishlist);
-        userRepository.save(user);
+        productRepository.deleteById(3L);
     }
 
     @Transactional
