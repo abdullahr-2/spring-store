@@ -12,7 +12,6 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Builder
 @Table(name = "users")
@@ -63,13 +62,13 @@ public class User {
         tag.getUsers().remove(this);
     }
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private Profile profile;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    private Profile profile;
 
-    public void addProfile(Profile profile) {
-        this.setProfile(profile);
-        profile.setUser(this);
-    }
+//    public void addProfile(Profile profile) {
+//        this.setProfile(profile);
+//        profile.setUser(this);
+//    }
 
     @ManyToMany
     @JoinTable(
@@ -81,6 +80,14 @@ public class User {
 
     public void addToWishlist(Product product) {
         wishlist.add(product);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "email = " + email + ")";
     }
 }
 
