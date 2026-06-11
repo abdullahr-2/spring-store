@@ -105,38 +105,10 @@ public class UserService {
     }
 
     @Transactional
-    public void createUsersAndProfiles() {
-        var user = User.builder()
-                .name("User2")
-                .email("Email2")
-                .password("pass2")
-                .build();
-
-        var profile = Profile.builder()
-                .bio("bio2")
-                .dateOfBirth("2026-02-02")
-                .loyaltyPoints("10")
-                .phoneNumber(2)
-                .build();
-
-        user.addProfile(profile);
-        userRepository.save(user);
-
-        var user2 = User.builder()
-                .name("User3")
-                .email("Email3")
-                .password("pass3")
-                .build();
-
-        var profile2 = Profile.builder()
-                .bio("bio3")
-                .dateOfBirth("2026-03-02")
-                .loyaltyPoints("20")
-                .phoneNumber(3)
-                .build();
-
-        user2.addProfile(profile2);
-        userRepository.save(user2);
-
+    public void fetchProfiles() {
+        var profiles = profileRepository.findByLoyaltyPointsGreaterThan("2");
+        profiles.forEach(p -> {
+            System.out.println(p.getId() + p.getUser().getEmail());
+        });
     }
 }
