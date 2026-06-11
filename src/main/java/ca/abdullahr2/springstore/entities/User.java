@@ -62,13 +62,13 @@ public class User {
         tag.getUsers().remove(this);
     }
 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-//    private Profile profile;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+    private Profile profile;
 
-//    public void addProfile(Profile profile) {
-//        this.setProfile(profile);
-//        profile.setUser(this);
-//    }
+    public void addProfile(Profile profile) {
+        this.setProfile(profile);
+        profile.setUser(this);
+    }
 
     @ManyToMany
     @JoinTable(
