@@ -1,5 +1,7 @@
 package ca.abdullahr2.springstore.repositories;
 
+import ca.abdullahr2.springstore.dtos.ProductSummary;
+import ca.abdullahr2.springstore.dtos.ProductSummaryDTO;
 import ca.abdullahr2.springstore.entities.Category;
 import ca.abdullahr2.springstore.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
@@ -22,4 +24,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(@Param("newPrice") BigDecimal newPrice, @Param("categoryId") Byte categoryId);
+
+    @Query("select new ca.abdullahr2.springstore.dtos.ProductSummaryDTO(p.id, p.name) from Product p where p.category = :category")
+    List<ProductSummaryDTO> findByCategory(@Param("category") Category category);
 }

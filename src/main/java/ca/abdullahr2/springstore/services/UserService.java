@@ -29,6 +29,11 @@ public class UserService {
         productRepository.updatePriceByCategory(BigDecimal.valueOf(10.99), (byte) 2);
     }
 
+    public void fetchProducts() {
+        var products = productRepository.findByCategory(new Category((byte) 2));
+        products.forEach(System.out::println);
+    }
+
     @Transactional
     public void showEntityStates() {
         User user = User.builder()

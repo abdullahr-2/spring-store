@@ -10,6 +10,6 @@ public class SpringStoreApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(SpringStoreApplication.class);
         var service = context.getBean(UserService.class);
-        service.updateProductPrices();
+        service.fetchProducts();
     }
 }
