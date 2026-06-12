@@ -4,6 +4,7 @@ import ca.abdullahr2.springstore.dtos.ProductSummary;
 import ca.abdullahr2.springstore.dtos.ProductSummaryDTO;
 import ca.abdullahr2.springstore.entities.Category;
 import ca.abdullahr2.springstore.entities.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
@@ -13,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
     // Find products between prices and sort by name
     @Procedure("findProductsByPrice")
     List<Product> findProducts(BigDecimal min, BigDecimal max);
