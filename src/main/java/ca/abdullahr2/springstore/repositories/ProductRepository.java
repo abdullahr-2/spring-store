@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> , ProductCriteriaRepository {
     // Find products between prices and sort by name
     @Procedure("findProductsByPrice")
     List<Product> findProducts(BigDecimal min, BigDecimal max);
