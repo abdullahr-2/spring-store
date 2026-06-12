@@ -111,6 +111,11 @@ public class UserService {
         products.forEach(System.out::println);
     }
 
+    public void fetchProductsByCategory(String category) {
+        var products = productRepository.findProductsByCategory(category);
+        products.forEach(System.out::println);
+    }
+
     public void fetchProductsBySpecification(String name,
                                              BigDecimal minPrice,
                                              BigDecimal maxPrice) {
