@@ -1,5 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="MYSQL_PASSWORD" value="REMOVED_PASSWORD" />
+    </envs>
     <module name="spring-store" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="ca.abdullahr2.StoreApplication" />
     <method v="2">
