@@ -1,4 +1,4 @@
-package com.codewithmosh.store.entities;
+package ca.abdullahr2.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

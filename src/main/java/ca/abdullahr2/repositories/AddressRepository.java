@@ -1,6 +1,6 @@
-package com.codewithmosh.store.repositories;
+package ca.abdullahr2.repositories;
 
-import com.codewithmosh.store.entities.Address;
+import ca.abdullahr2.entities.Address;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {
