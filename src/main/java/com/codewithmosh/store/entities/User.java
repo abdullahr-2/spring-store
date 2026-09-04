@@ -1,4 +1,4 @@
-package ca.abdullahr2.springstore.entities;
+package com.codewithmosh.store.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,12 +12,13 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Builder
+@Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -43,32 +44,8 @@ public class User {
         address.setUser(null);
     }
 
-    @ManyToMany
-    @JoinTable(
-        name = "user_tags",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    @Builder.Default
-    private Set<Tag> tags = new HashSet<>();
-
-    public void addTag(Tag tag) {
-        tags.add(tag);
-        tag.getUsers().add(this);
-    }
-
-    public void removeTag(Tag tag) {
-        tags.remove(tag);
-        tag.getUsers().remove(this);
-    }
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
-
-    public void addProfile(Profile profile) {
-        this.setProfile(profile);
-        profile.setUser(this);
-    }
 
     @ManyToMany
     @JoinTable(
@@ -76,10 +53,10 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private Set<Product> wishlist = new HashSet<>();
+    private Set<Product> favoriteProducts = new HashSet<>();
 
-    public void addToWishlist(Product product) {
-        wishlist.add(product);
+    public void addFavoriteProduct(Product product) {
+        favoriteProducts.add(product);
     }
 
     @Override
@@ -90,4 +67,3 @@ public class User {
                 "email = " + email + ")";
     }
 }
-

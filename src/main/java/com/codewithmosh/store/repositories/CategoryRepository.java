@@ -1,6 +1,6 @@
-package ca.abdullahr2.springstore.repositories;
+package com.codewithmosh.store.repositories;
 
-import ca.abdullahr2.springstore.entities.Category;
+import com.codewithmosh.store.entities.Category;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CategoryRepository extends CrudRepository<Category, Byte> {

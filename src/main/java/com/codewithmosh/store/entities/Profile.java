@@ -1,36 +1,37 @@
-package ca.abdullahr2.springstore.entities;
+package com.codewithmosh.store.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+import java.time.LocalDate;
+
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Getter
+@Setter
 @Entity
-@Builder
 @Table(name = "profiles")
 public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "bio")
     private String bio;
 
     @Column(name = "phone_number")
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Column(name = "loyalty_points")
-    private String loyaltyPoints;
+    private Integer loyaltyPoints;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
-    @ToString.Exclude
     private User user;
 }
